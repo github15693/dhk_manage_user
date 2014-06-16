@@ -26,4 +26,4 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
-[ ![Codeship Status for github15693/dhk_manage_user](https://www.codeship.io/projects/e1837310-d76f-0131-28b3-76d451bab93b/status)](https://www.codeship.io/projects/23880)
+
