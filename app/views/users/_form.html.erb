@@ -1,0 +1,48 @@
+<%= form_for(@user, remote: true) do |f| %>
+  <% if @note %>
+    <div id="error_explanation">
+      <h2 class="error">prohibited this user from being saved:</h2>
+
+      <ul>
+        <li><%= @note %></li>
+      </ul>
+    </div>
+  <% end %>
+    <div class="form-group">
+      <div class="field">
+        <%= f.label 'User ID' %>
+        <%= f.text_field :user_id, :class => 'form-control', required: true %>
+      </div>
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name, :class => 'form-control', required: true %>
+      </div>
+      <div class="field">
+        <%= f.label :address %>
+        <%= f.text_field :address, :class => 'form-control', required: true %>
+      </div>
+      <div class="field">
+        <%= f.label :userName %>
+        <%= f.text_field :userName, :class => 'form-control', required: true %>
+      </div>
+      <div class="field">
+        <%= f.label :passWord %>
+        <%= f.password_field :passWord, :class => 'form-control', required: true %>
+      </div>
+      <div class="field">
+        <%= f.label :passWord_confirmation %>
+        <%= f.password_field :passWord_confirmation, :class => 'form-control', required: true %>
+      </div>
+      <% if session[:admin] %>
+      <div class="field">
+        <%= f.label 'enabled', :class => 'checkbox-inline' %>
+        <%= f.check_box :enabled, :class => 'checkbox' %>
+      </div>
+      <% end%>
+      <br/>
+      <br/>
+          <div class="actions">
+            <%= f.submit :class => 'btn btn-primary'%>
+          </div>
+    </div>
+<% end %>

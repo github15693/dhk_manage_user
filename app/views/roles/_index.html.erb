@@ -1,0 +1,43 @@
+<form action="/roles/actionCollection" method="post" data-remote='true'>
+  <h1>Listing roles</h1>
+
+  <div class="col-lg-7">
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <label class="checkbox-inline" ><%= radio_button_tag 'rdoAction', true,true %>Enable</label>
+        <label class="checkbox-inline" ><%= radio_button_tag 'rdoAction', false %>Disable</label>
+        <label class="checkbox-inline" ><%= radio_button_tag 'rdoAction', 'delete' %>Delete</label>
+        <%= submit_tag 'Action', :class => 'btn btn-primary',data: {confirm: 'Are you sure?'} %>
+
+      </div>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Select</th>
+      <th>Role id</th>
+      <th>Role name</th>
+      <th>Enabled</th>
+      <th colspan="4" style="text-align: center">Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @roles.each do |role| %>
+        <tr>
+          <td><input type="checkbox" name="chk_role[]" value="<%= role.id %>"></td>
+          <td><%= role.role_id %></td>
+          <td><%= role.role_name %></td>
+          <td><%= role.enabled %></td>
+          <td><%= link_to 'Show', role %></td>
+          <td><%= link_to 'Edit', edit_role_path(role) %></td>
+          <td><%= link_to 'Destroy', role, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          <td><%= link_to 'Add grant',addGrant_path(role.id), remote: true %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</form>

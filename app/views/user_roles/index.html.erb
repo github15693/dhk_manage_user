@@ -1,0 +1,20 @@
+<h1>Listing user_roles</h1>
+
+<table class="table">
+
+  <tbody>
+    <% @user_roles.each do |user_role| %>
+      <tr>
+        <td><%= user_role.user.name%></td>
+        <td><%= user_role.role.role_name%></td>
+        <td><%= link_to 'Show', user_role %></td>
+        <td><%= link_to 'Edit', edit_user_role_path(user_role) %></td>
+        <td><%= link_to 'Destroy', user_role, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User role', new_user_role_path %>

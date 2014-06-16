@@ -1,0 +1,60 @@
+<h1>Listing emails</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @emails.each do |email| %>
+      <tr>
+        <td><%= email.title %></td>
+        <td><%= email.content %></td>
+        <% if session[:grant_id]
+             session[:grant_id].each do |grant|
+               if grant == 'R002G001'
+        %>
+                    <td><%= link_to 'Show', email %></td>
+                <% end
+                   end
+                   end %>
+
+        <% if session[:grant_id]
+             session[:grant_id].each do |grant|
+               if grant == 'R002G002'
+        %>
+                    <td><%= link_to 'Edit', edit_email_path(email) %></td>
+                <% end
+                   end
+                   end %>
+
+        <% if session[:grant_id]
+             session[:grant_id].each do |grant|
+               if grant == 'R002G003'
+        %>
+                    <td><%= link_to 'Destroy', email, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% end
+                   end
+                   end %>
+
+
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if session[:grant_id]
+     session[:grant_id].each do |grant|
+       if grant == 'R002G004'
+%>
+            <%= link_to 'New Email', new_email_path %>
+        <% end
+           end
+           end %>
+

@@ -1,0 +1,51 @@
+<div class="col-lg-6">
+  <div class="panel panel-primary">
+    <div class="panel-footer">Permiss for <b><%= @roleTemp.role_name %></b> role</div>
+    <div class="panel-body" id="loadcontent">
+      <%= form_for(@role_grant, remote: true) do |f|%>
+          <% if @role_grant.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@role_grant.errors.count, "error") %> prohibited this role_grant from being saved:</h2>
+
+                <ul>
+                  <% @role_grant.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+
+          <%= f.collection_select(:role_id,@role,:id, :id_name) %></p>
+
+          <% @grants.each do |grant| %>
+
+              <input id="role_grant_grant_id" type="checkbox" value="<%= grant.id %>" name="grant_id[]">
+              <label><%=  grant.grant_name%></label>
+              <br/>
+          <% end %>
+          <div class="actions">
+            <%= f.submit %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-6">
+  <div class="panel panel-primary">
+    <div class="panel-footer">Authorities of <b><%= @roleTemp.role_name %></b> role</div>
+    <div class="panel-body" id="loadcontent">
+      <table class="table">
+        <tbody>
+            <% @role_grants.each do |role_grant| %>
+                <tr>
+                  <td><%= role_grant.grant.grant_name%></td>
+                  <td><%= link_to 'Destroy', role_grant, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
+                </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

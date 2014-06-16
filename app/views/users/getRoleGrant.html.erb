@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-lg-3">
+    <div class="list-group">
+      <a href="" class="list-group-item active">Role</a>
+      <% if @userRole %>
+      <% @userRole.each do |roles|%>
+          <a href="" class='list-group-item'><%= roles.role_name %></a>
+      <% end %>
+       <% else  %>
+          <a href="" class='list-group-item'>You don't have any Role and Grant</a>
+       <% end %>
+    </div>
+
+    <% if session[:grant_name] %>
+    <div class="list-group">
+      <a href="#" class="list-group-item active">Grant</a>
+      <% session[:grant_name].each do |grant|%>
+          <a href="" class='list-group-item'><%= grant %></a>
+      <% end %>
+    </div>
+     <% end %>
+
+  </div>
+
+  <div class="col-lg-9">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Content</div>
+      <div class="panel-body" id="loadcontent">
+
+      </div>
+    </div>
+  </div>
+</div>

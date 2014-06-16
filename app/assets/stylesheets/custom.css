@@ -1,0 +1,35 @@
+#formlogin{
+    margin-left: 35%;
+}
+#formlogin input{
+    width: 100%;
+}
+#formlogin a{
+    text-decoration: none;
+}
+.float-left{
+    float: left;
+    display: inline-block;
+}
+#user_enabled{
+    float: left;
+    display: inline;
+}
+
+.list-group a:hover{
+    color: #000000;
+}
+
+body {
+    padding-top: 70px;
+}
+
+.footer {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+}
+.float-right{
+    float: right;
+}

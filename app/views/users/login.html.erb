@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+      <div class="col-lg-3 form-group" id="formlogin">
+        <h1>Please sign in</h1>
+        <%= form_tag '/users/login' do %>
+
+            <%= label_tag 'Username: ' %><br>
+            <%= text_field_tag :userName,nil, :class =>'form-control', placeholder: 'Your userName', required: true %><br>
+
+            <%= label_tag 'Password: ' %><br>
+            <%= password_field_tag :passWord,nil, :class =>'form-control', placeholder: 'Your passWord', required: true %><br/>
+
+            <%= link_to 'Register! If you don\'t have account', '/users/new', :class => 'label-info' %><br/><br/>
+            <%= submit_tag 'Login', :class => 'btn btn-primary' %>
+
+        <% end %>
+
+        </div>
+    </div>
+</div>
+

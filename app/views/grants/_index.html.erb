@@ -1,0 +1,24 @@
+<h1>Listing grants</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Grant</th>
+      <th>Grant name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grants.each do |grant| %>
+      <tr>
+        <td><%= grant.grant_id %></td>
+        <td><%= grant.grant_name %></td>
+        <td><%= link_to 'Show', grant %></td>
+        <td><%= link_to 'Edit', edit_grant_path(grant) %></td>
+        <td><%= link_to 'Destroy', grant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

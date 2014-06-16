@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-lg-3" id='loadRG'>
+    <div class="list-group">
+      <a href="#" class="list-group-item active">Grant</a>
+
+        <% if @getRoles.count > 0
+
+              @getRoles.each do |getRole|%>
+                <% if getRole.role.enabled
+                     (session[:roles] ||= []) << getRole.role.role_id
+                %>
+                <%= link_to getRole.role.role_id + ' ' + getRole.role.role_name, '/grants/',:id=>'grantlist', :class => 'list-group-item', remote: true%>
+               <%   end
+                 end
+               else
+               %>
+              <a class='list-group-item'>You don't have any role</a>
+         <% end %>
+      <% session[:roles].each do |role| %>
+          <p><%= role %></p>
+        <% end%>
+    </div>
+  </div>
+
+  <div class="col-lg-9">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Content</div>
+      <div class="panel-body" id="loadcontent">
+
+      </div>
+    </div>
+  </div>
+</div>

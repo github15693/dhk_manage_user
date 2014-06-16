@@ -1,0 +1,68 @@
+<form action="/users/deleteCollection" method="post" data-remote = 'true'>
+  <h1>Listing users</h1>
+
+  <div class="col-lg-6">
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <!-- Single button -->
+        <div class="btn-group">
+          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+            Fill user by role  <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <% @allroles.each do |role| %>
+                <li><%= link_to role.role_name, user_by_role_path(role.id), remote: true  %></li>
+            <% end %>
+            <!--<li><a href="#">Another action</a></li>-->
+            <!--<li><a href="#">Something else here</a></li>-->
+            <!--<li class="divider"></li>-->
+            <!--<li><a href="#">Separated link</a></li>-->
+          </ul>
+        </div>
+        <!--Delete selection button-->
+        <%= submit_tag 'Delete selection', :class => 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+  </div>
+
+    <!--Enable user-->
+  <div class="col-lg-5">
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <label class="checkbox-inline" ><%= radio_button_tag 'rdoAction', true,true %>Enable</label>
+        <label class="checkbox-inline" ><%= radio_button_tag 'rdoAction', false %>Disable</label>
+        <%= submit_tag 'Action', :class => 'btn btn-primary',data: {confirm: 'Are you sure?'} %>
+
+      </div>
+    </div>
+  </div>
+
+  <table class="table">
+  <thead>
+    <tr>
+      <th>Select</th>
+      <th>User</th>
+      <th>Username</th>
+      <th>Address</th>
+      <th>Enabled</th>
+      <th colspan="4" style="text-align: center">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><input type="checkbox" name="chk_user[]" value="<%= user.id%>"></td>
+        <td><%= user.user_id %></td>
+        <td><%= user.userName %></td>
+        <td><%= user.address %></td>
+        <td><%= user.enabled %></td>
+        <td><%= link_to 'Show', user, remote: true %></td>
+        <td><%= link_to 'Edit', edit_user_path(user), remote: true %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
+        <td><%= link_to 'permiss',permission_path(user.id), remote: true %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</form>
